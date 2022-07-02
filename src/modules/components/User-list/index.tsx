@@ -1,4 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, {
+    useEffect,
+    useState,
+    useCallback} from 'react';
 import {
     Avatar,
     ListItem,
@@ -8,6 +11,7 @@ import {
 import {SearchBar} from "../Searchbar";
 import {doApiCall} from "../../global/units/api";
 import {limit, userEndpoint} from "../../global/units/contsants";
+import {debounce} from "@mui/material";
 
 const fields = ['firstName', 'lastName', 'email', 'age'];
 
@@ -28,9 +32,11 @@ export const List = () => {
         setList(response.users);
     }
 
+    const debouncedChangeHandler = useCallback(debounce(getListData), []);
+
     return (
         <>
-            <SearchBar onChangeHandler={getListData} />
+            <SearchBar onChangeHandler={debouncedChangeHandler} />
             <MuiList dense={true}>
             {
                 list.map(
