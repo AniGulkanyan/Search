@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import {SearchBar} from "./modules/components/Searchbar";
-import {List} from "./modules/components/List";
+import {List} from "./modules/components/User-list";
 
 function App() {
   return (
     <div className="App">
-     <List />
+        <List />
     </div>
   );
 }

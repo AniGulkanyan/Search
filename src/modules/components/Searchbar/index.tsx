@@ -7,9 +7,8 @@ interface ISearchBar {
 
 export const SearchBar = ({onChangeHandler}: ISearchBar) => {
     return <TextField
-                onChange={(event) => onChangeHandler(event.target.value)}
-                color="success" label="Name"
-                helperText="Please enter the name"
+                onChange={(event) => onChangeHandler(event.target.value.trim())}
+                color="success" label="name/surname/email"
                 margin="dense"
             />
 }

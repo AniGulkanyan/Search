@@ -6,8 +6,8 @@ import {
     ListItemText, List as MuiList
 } from "@mui/material";
 import {SearchBar} from "../Searchbar";
-import {doApiCall} from "../../global/api";
-import {limit, userEndpoint} from "../../global/contsants";
+import {doApiCall} from "../../global/units/api";
+import {limit, userEndpoint} from "../../global/units/contsants";
 
 const fields = ['firstName', 'lastName', 'email', 'age'];
 
@@ -28,26 +28,22 @@ export const List = () => {
         setList(response.users);
     }
 
-
     return (
         <>
             <SearchBar onChangeHandler={getListData} />
             <MuiList dense={true}>
             {
                 list.map(
-                    (item:any) => {
+                    (item) => {
                         return (
                             <ListItem key={item.id}>
                                 <ListItemAvatar>
-                                    <Avatar>
-                                        <img src={item.image} alt='avatar'/>
-                                    </Avatar>
+                                    <Avatar sx={{ width: 54, height: 54 }} src={item.image} alt='avatar' />
                                 </ListItemAvatar>
                                 {
-                                    fields.map((field, index) => {
-                                        console.log(item)
+                                    fields.map((field: string) => {
                                         return <ListItemText
-                                            key={`${item[fields[0] || '']}-${index}`} // for uniqueness
+                                            key={field}
                                             primary={item[field]}
                                         />
                                     })
