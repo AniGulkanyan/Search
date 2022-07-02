@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React  from "react";
 import TextField from '@mui/material/TextField';
 
 interface ISearchBar {
@@ -6,5 +6,10 @@ interface ISearchBar {
 }
 
 export const SearchBar = ({onChangeHandler}: ISearchBar) => {
-    return <TextField onChange={(event) => onChangeHandler(event.target.value)} />
+    return <TextField
+                onChange={(event) => onChangeHandler(event.target.value)}
+                color="success" label="Name"
+                helperText="Please enter the name"
+                margin="dense"
+            />
 }

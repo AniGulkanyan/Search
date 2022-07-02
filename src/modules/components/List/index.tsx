@@ -11,7 +11,6 @@ import {limit, userEndpoint} from "../../global/contsants";
 
 const fields = ['firstName', 'lastName', 'email', 'age'];
 
-// fields - which fields of the list item should be displayed
 export const List = () => {
 
     const [list, setList] = useState<Array<any>>([]);
