@@ -1,6 +1,6 @@
 export const doApiCall = async (options) => {
     const {url, ...rest} = options;
-    const response = await fetch(options.url, {
+    const response = await fetch(url, {
         ...rest
     });
 

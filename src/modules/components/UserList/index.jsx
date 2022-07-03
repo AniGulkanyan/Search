@@ -1,16 +1,17 @@
 import React, {
+    useCallback,
     useEffect,
     useState,
-    useCallback} from 'react';
+} from 'react';
 import {
     Avatar,
     ListItem,
     ListItemAvatar,
     ListItemText, List as MuiList
 } from "@mui/material";
-import {SearchBar} from "../Searchbar";
-import {doApiCall} from "../../global/units/api";
-import {limit, userEndpoint} from "../../global/units/contsants";
+import {SearchBar} from "../SearchBar";
+import {doApiCall} from "../../global/utils/api";
+import {limit, userEndpoint} from "../../global/utils/contsants";
 import {debounce} from "@mui/material";
 
 const fields = ['firstName', 'lastName', 'email', 'age'];
