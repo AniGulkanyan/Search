@@ -15,15 +15,15 @@ import {debounce} from "@mui/material";
 
 const fields = ['firstName', 'lastName', 'email', 'age'];
 
-export const List = () => {
+export const UserList = () => {
 
-    const [list, setList] = useState<Array<any>>([]);
+    const [list, setList] = useState([]);
 
     useEffect(() => {
         getListData();
     }, []);
 
-    async function getListData(value?: string) {
+    async function getListData(value) {
         const url = value ?  `${userEndpoint}/search?q=${value}&limit=${limit}` :  `${userEndpoint}?limit=${limit}`
         const response = await doApiCall({
             url,
@@ -47,7 +47,7 @@ export const List = () => {
                                     <Avatar sx={{ width: 54, height: 54 }} src={item.image} alt='avatar' />
                                 </ListItemAvatar>
                                 {
-                                    fields.map((field: string) => {
+                                    fields.map((field) => {
                                         return <ListItemText
                                             key={field}
                                             primary={item[field]}
