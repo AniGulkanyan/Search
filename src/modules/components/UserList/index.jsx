@@ -9,7 +9,7 @@ import {
     ListItemAvatar,
     ListItemText, List as MuiList
 } from "@mui/material";
-import {SearchBar} from "../SearchBar";
+import SearchBar from "../SearchBar";
 import {doApiCall} from "../../global/utils/api";
 import {limit, userEndpoint} from "../../global/utils/contsants";
 import {debounce} from "@mui/material";
@@ -37,7 +37,7 @@ export const UserList = () => {
 
     return (
         <>
-            <SearchBar onChangeHandler={debouncedChangeHandler} />
+            <SearchBar onChangeHandler={debouncedChangeHandler} list={list} />
             <MuiList dense={true} sx={{padding: '8px'}}>
             {
                 list.map(
@@ -54,9 +54,9 @@ export const UserList = () => {
                                         alt='avatar' />
                                 </ListItemAvatar>
                                 {
-                                    fields.map((field) => {
+                                    fields.map((field, index) => {
                                         return <ListItemText
-                                            key={field}
+                                            key={`${item[fields[0] || '']}-${index}`}
                                             primary={item[field]}
                                         />
                                     })
